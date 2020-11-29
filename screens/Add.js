@@ -37,7 +37,7 @@ const Add = ({navigation}) => {
       }
       navigation.navigate('Home');
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return Snackbar.show({
         text: 'Local Storage data is not fetched',
         backgroundColor: 'red',
@@ -52,7 +52,7 @@ const Add = ({navigation}) => {
           <Input
             placeholder="season name"
             style={{color: '#FFF'}}
-            name={sessionName}
+            value={sessionName}
             onChangeText={(text) => setSessionName(text)}
           />
         </Item>
@@ -60,7 +60,7 @@ const Add = ({navigation}) => {
           <Input
             placeholder="no of sessions"
             style={{color: '#FFF'}}
-            name={noOfSessions}
+            value={noOfSessions}
             onChangeText={(text) => setNoOfSessions(text)}
           />
         </Item>

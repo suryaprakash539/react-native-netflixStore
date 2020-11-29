@@ -40,7 +40,8 @@ const Home = ({navigation, route}) => {
 
   const deleteSeason = async (id) => {
     const newArr = seasons.filter((season) => season.id !== id);
-    await AsyncStorage.setItem('@season_list', JSON.stringify(newArr));
+    //console.log(newArr);
+    await AsyncStorage.setItem('@session_list', JSON.stringify(newArr));
     setSeasons(newArr);
   };
 
@@ -51,7 +52,7 @@ const Home = ({navigation, route}) => {
       }
       return season;
     });
-    console.log(newArr);
+    newArr;
     await AsyncStorage.setItem('@season_list', JSON.stringify(newArr));
     setSeasons(newArr);
   };
@@ -71,7 +72,6 @@ const Home = ({navigation, route}) => {
   return (
     <ScrollView
       contentContainerStyle={{flexGrow: 1, backgroundColor: '#1b262c'}}>
-      <Text>List of sessions goes here</Text>
       {seasons.length == 0 ? (
         <Container style={styles.container}>
           <H1 style={styles.heading}>Watchlist is empty.Please add to watch</H1>
