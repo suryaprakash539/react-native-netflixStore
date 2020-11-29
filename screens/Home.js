@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, ScrollView} from 'react-native';
+import {StyleSheet, ScrollView, Image} from 'react-native';
 import {
   Fab,
   Icon,
@@ -22,12 +22,10 @@ import {useIsFocused} from '@react-navigation/native';
 
 const Home = ({navigation, route}) => {
   const [seasons, setSeasons] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const isFocused = useIsFocused();
 
   const getSeasonList = async () => {
-    setLoading(true);
     const storedValue = await AsyncStorage.getItem('@session_list');
     if (!storedValue) {
       setSeasons([]);
@@ -35,7 +33,6 @@ const Home = ({navigation, route}) => {
     const list = JSON.parse(storedValue);
 
     setSeasons(list);
-    setLoading(false);
   };
 
   const deleteSeason = async (id) => {
@@ -61,16 +58,9 @@ const Home = ({navigation, route}) => {
     getSeasonList();
   }, [isFocused]);
 
-  //   if (loading) {
-  //     return (
-  //       <Container style={styles.container}>
-  //         <Spinner color="green" />
-  //       </Container>
-  //     );
-  //   }
-
   return (
     <ScrollView
+      vertical={true}
       contentContainerStyle={{flexGrow: 1, backgroundColor: '#1b262c'}}>
       {seasons.length == 0 ? (
         <Container style={styles.container}>

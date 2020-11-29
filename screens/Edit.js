@@ -51,7 +51,7 @@ const Edit = ({navigation, route}) => {
   };
 
   return (
-    <Container>
+    <Container style={styles.container}>
       <Form>
         <Item rounded style={styles.formItem}>
           <Input
@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   formItem: {
+    marginTop: 10,
     marginBottom: 20,
   },
 });
