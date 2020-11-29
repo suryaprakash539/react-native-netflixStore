@@ -18,10 +18,13 @@ import {
 } from 'native-base';
 
 import AsyncStorage from '@react-native-community/async-storage';
+import {useIsFocused} from '@react-navigation/native';
 
 const Home = ({navigation, route}) => {
   const [seasons, setSeasons] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const isFocused = useIsFocused();
 
   const getSeasonList = async () => {
     setLoading(true);
@@ -37,7 +40,7 @@ const Home = ({navigation, route}) => {
 
   useEffect(() => {
     getSeasonList();
-  }, [seasons]);
+  }, [isFocused]);
 
   //   if (loading) {
   //     return (
@@ -48,7 +51,8 @@ const Home = ({navigation, route}) => {
   //   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView
+      contentContainerStyle={{flexGrow: 1, backgroundColor: '#1b262c'}}>
       <Text>List of sessions goes here</Text>
       {seasons.length == 0 ? (
         <Container style={styles.container}>
